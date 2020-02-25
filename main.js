@@ -2,10 +2,11 @@ class Calculator{
     constructor(previousOperandTextElement, currentOperandTextElement){
         this.previousOperandTextElement = previousOperandTextElement
         this.currentOperandTextElement = currentOperandTextElement
+        this.clear()
     }
     clear(){
         this.currentOperand = ''
-        this.previousOperand =''
+        this.previousOperand = ''
         this.operation = undefined
 
     }
@@ -28,8 +29,8 @@ class Calculator{
     coompute(){
         let computation
         const prev = parseFloat(this.previousOperand)
-        const urrent = parseFloat(this.currentOperand)
-        if (isNAN(prev || isNAN(current))return
+        const current = parseFloat(this.currentOperand)
+        if (isNAN(prev) || isNAN(current)) return
         switch(this.operation){
             case '+':
                 computation = prev + current
@@ -91,7 +92,7 @@ const currentOperandTextElement = document.querySelector('[data-current-operand]
 
 const calculator = new Calculator(previousOperandTextElement,currentOperandTextElement)
 
-numberButtons.forEach(button => () {
+numberButtons.forEach(button => {
     button.addEventListener('click', () => {
         calculator.appendNumber(button.innerText)
         calculator.updateDisplay()
